@@ -1,4 +1,4 @@
-# FS_challenge
+# Full-stack web developer challenge
 
 In this test, you are expected to write a small web application to manage a list of Movies. Each movie has a name, release year and director. The test consists of two parts, a RESTful API as the **backend** and the Javascript based **frontend** application.
 

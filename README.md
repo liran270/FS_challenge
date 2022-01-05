@@ -36,7 +36,7 @@ eg:
 * **PUT /director/{{id}}** - Updates an existing director - Expects a JSON body
 * **PUT /movie/{{id}}** - Updates an existing movie - Expects a JSON body
 
-You are recommended to use **Python/Django** along with [**Django REST Framework**](http://www.django-rest-framework.org/) to implement your backend and API layer, but you are free to use a different language/framework/libraries you are comfortable with.
+You are recommended to use **Python/Django** along with [**Django REST Framework**](http://www.django-rest-framework.org/) or **NodeJs/Express** along with [**Express Framework**](https://expressjs.com/)to implement your backend and API layer, but you are free to use a different language/framework/libraries you are comfortable with.
 
 
 ## Frontend implementation

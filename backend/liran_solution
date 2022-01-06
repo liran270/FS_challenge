@@ -1,0 +1,86 @@
+def convert(number: int) -> str:
+    
+  if number == 0:
+    return 'zero'
+
+  if number < 0:
+    minus = True
+    number = abs(number)
+  else:
+    minus = False
+  
+  def convert_helper(three_digit_number: int) -> str:
+    """
+    This helper function return the spoken words for number with maximum of 3 digits.
+    """
+    if three_digit_number == 0:
+      return ''
+
+    num_dict = {1: 'one',
+                2: 'two',
+                3: 'three',
+                4: 'four',
+                5: 'five',
+                6: 'six',
+                7: 'seven',
+                8: 'eight',
+                9: 'nine',
+                10: 'ten',
+                11: 'eleven',
+                12: 'twelve',
+                13: 'thirteen',
+                14: 'fourteen',
+                15: 'fifteen',
+                16: 'sixteen',
+                17: 'seventeen',
+                18: 'eighteen',
+                19: 'nineteen',
+                20: 'twenty',
+                30: 'thirty',
+                40: 'forty',
+                50: 'fifty',
+                60: 'sixty',
+                70: 'seventy',
+                80: 'eighty',
+                90: 'ninety'}
+
+    if three_digit_number in list(num_dict.keys()):
+      return num_dict[three_digit_number].strip()
+    
+    result = ''
+    if three_digit_number >= 100:
+      result = num_dict[int(list(str(three_digit_number))[0])] + ' hundred'
+      three_digit_number = three_digit_number % 100
+      if three_digit_number == 0:
+        return result.strip()
+
+    if three_digit_number in list(num_dict.keys()):
+      result = result + ' ' + num_dict[three_digit_number]
+      return result.strip()
+
+    else:
+      ls = [int(x) for x in list(str(three_digit_number))]
+      ls[0] = ls[0] * 10
+      result = result + ' ' + num_dict[ls[0]] + ' ' + num_dict[ls[1]]
+      return result.strip()
+
+  triplets = []
+  temp_num = number
+  while temp_num > 0:
+    triplets += [temp_num % 1000]
+    temp_num = int((temp_num - (temp_num % 1000)) / 1000)
+
+  names = ['', 'thousand,', 'million,', 'billion,', 'trillion,']
+
+  result = ''
+  n = len(triplets)
+
+  for i in range(n):
+    if triplets[i] > 0:
+      result = (convert_helper(triplets[i]) + ' ' + names[i] + ' ' + result).strip()
+  if result[-1] == ',':
+    result = result[:-1]
+  if minus:
+    result = 'minus ' + result
+
+  return result[0].upper() + result[1:]
